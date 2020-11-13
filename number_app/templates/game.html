@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+</head>
+<body>
+    <h1>GUESSING GAMING </h1>
+    <p>WELCOME {{request.session.username}}!</p>
+    <form action="/process_game" method="post">
+        {% csrf_token %}
+        <select name="guess" >
+            {% for value in values %}
+            <option value="{{value}}">{{value}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Guess!">
+    </form>
+    <h2>Results: {{request.session.result}} </h2>
+</body>
+</html>
